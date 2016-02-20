@@ -6,7 +6,8 @@ public class DwellTime
 {
 	private int id;
 	private int masterId;
-	int times[] = new int[5];
+	int recordings = 2;
+	int times[] = new int[10];
 	int avgTime = 0;
 	boolean first = true;
 	int index;
@@ -23,6 +24,12 @@ public class DwellTime
 		//check if this is the first time received
 		if(!first)
 		{
+			//check that the time is not out of sync (only do this if we already have 2 recordings)
+			if((times.length - index) >= recordings && (time > avgTime+18 || time < avgTime-18))
+			{
+				return;
+			}
+			
 			for(int i = 0; i < times.length - 1; i++)
 			{
 				times[i] = times[i+1];
@@ -37,7 +44,8 @@ public class DwellTime
 		}
 		else
 		{
-			times[4] = time;
+			//first time
+			times[times.length - 1] = time;
 			avgTime = time;
 			first = false;
 			index -= 1;
@@ -69,6 +77,6 @@ public class DwellTime
 	
 	public String write()
 	{
-		return NativeKeyEvent.getKeyText(masterId) + "," + NativeKeyEvent.getKeyText(id) + "," + avgTime;
+		return NativeKeyEvent.getKeyText(masterId) + "," + NativeKeyEvent.getKeyText(id) + "," + avgTime + "," + (times.length - index);
 	}
 }

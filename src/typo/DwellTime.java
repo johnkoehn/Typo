@@ -27,6 +27,7 @@ public class DwellTime
 			{
 				times[i] = times[i+1];
 			}
+			times[times.length - 1] = time;
 			if(index > 0)
 			{
 				index -= 1;
@@ -39,7 +40,7 @@ public class DwellTime
 			times[4] = time;
 			avgTime = time;
 			first = false;
-			index += 1;
+			index -= 1;
 		}
 	}
 	
@@ -47,7 +48,7 @@ public class DwellTime
 	{
 		int sum = 0;
 		int count = 0;
-		for(int i = times.length; i >= index; i--)
+		for(int i = times.length - 1; i >= index; i--)
 		{
 			sum += times[i];
 			count += 1;

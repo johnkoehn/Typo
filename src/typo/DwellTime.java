@@ -5,7 +5,7 @@ public class DwellTime
 	private int id;
 	private int masterId;
 	int times[] = new int[5];
-	int avg_time = 0;
+	int avgTime = 0;
 	boolean first = true;
 	int index;
 	
@@ -35,7 +35,7 @@ public class DwellTime
 		else
 		{
 			times[4] = time;
-			avg_time = time;
+			avgTime = time;
 			first = false;
 			index += 1;
 		}
@@ -51,7 +51,7 @@ public class DwellTime
 			count += 1;
 		}
 		
-		avg_time = sum/count;
+		avgTime = sum/count;
 	}
 	
 	public int getId()
@@ -61,11 +61,11 @@ public class DwellTime
 	
 	public int getTime()
 	{
-		return avg_time;
+		return avgTime;
 	}
 	
-	public void write()
+	public String write()
 	{
-		
+		return masterId + "," + id + "," + avgTime;
 	}
 }

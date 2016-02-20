@@ -5,7 +5,8 @@ public class Main1
 
 	public static void main(String[] args)
 	{
-		KeyManager mang = new KeyManager();
+		
+		KeyManager mang = new KeyManager("PLACEHOLDER");
 		mang.createListener();
 		
 		Thread thred = new Thread(new Runnable()
@@ -20,6 +21,7 @@ public class Main1
 					{
 						Thread.sleep(30000);
 						mang.write();
+						mang.writeBig();
 					} catch (InterruptedException e)
 					{
 						// TODO Auto-generated catch block

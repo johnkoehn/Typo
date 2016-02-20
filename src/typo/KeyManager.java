@@ -1,15 +1,17 @@
 package typo;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 //Global key listener libraries
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
-
-import java.util.logging.*;
 
 
 public class KeyManager
@@ -24,12 +26,13 @@ public class KeyManager
 	Key currKeyReleased;
 	Key lastKeyPressed;
 	
+	private String user;
 	boolean hasNextKeyTyped;	
 	
-	public KeyManager()
+	public KeyManager(String user)
 	{
 		keys = new ArrayList<Key>();
-		
+		this.user = user;
 		//Adds all of the keys to ArrayList<Key> keys
 		k = new Key(NativeKeyEvent.VC_A);
 		keys.add(k);
@@ -171,6 +174,28 @@ public class KeyManager
 			for(Key key : keys)
 			{
 				key.write();
+			}
+		}
+		
+		public void writeBig(){
+			File file = new File(user + "_Big.txt");
+			try
+			{
+				PrintWriter writer = new PrintWriter(file);
+				
+				for(int i = 0; i < keys.size(); i += 1){
+					ArrayList<String> lines = keys.get(i).writeBig();
+					
+					for(int j = 0; j < lines.size(); j += 1){
+						writer.println(lines.get(j));
+					}
+				}
+				
+				writer.close();
+			} catch (FileNotFoundException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 }

@@ -174,4 +174,12 @@ public class DwellTimeManager
 		return - 1;
 	}
 	
+	public ArrayList<String> writeBig(){
+		ArrayList<String> lines= new ArrayList<String>();
+		for(int i = 0; i < dTimes.size(); i += 1){
+			lines.add(dTimes.get(i).write());
+		}
+		return lines;
+	}
+	
 }

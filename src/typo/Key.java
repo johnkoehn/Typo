@@ -11,11 +11,11 @@ public class Key
 	private int timePressed;
 	private int timeReleased;
 	
-	private int dwellTime;
+	private int dwellTime = 0;
 	private int FlightTime;
 	
 	private int nextKeyID;
-	private boolean keyEdgeCase;
+	private volatile boolean keyEdgeCase;
 	
 	public Key(int ID)
 	{ 
@@ -64,7 +64,8 @@ public class Key
 		keyEdgeCase = true;
 		
 		if(released == true){
-			dManager.pressed(nextKeyID, dwellTime);
+			dManager.pressed(ID, dwellTime);
+			System.out.println("1");
 			keyEdgeCase = false;
 		}
 		else

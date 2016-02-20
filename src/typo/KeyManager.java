@@ -107,7 +107,7 @@ public class KeyManager
 			public void nativeKeyReleased(NativeKeyEvent e)
 			{
 				System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-				currKeyReleased = new Key(e.getKeyCode());
+				//currKeyReleased = new Key(e.getKeyCode());
 				alertKeyReleased(e.getKeyCode());
 			}
 			
@@ -118,7 +118,7 @@ public class KeyManager
 				alertKeyPressed(keyID);
 				System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 			
-				lastKeyReleased = currKeyReleased;
+				//lastKeyReleased = currKeyReleased;
 			}
 
 			@Override
@@ -132,7 +132,7 @@ public class KeyManager
 	
 		public void alertKeyPressed(int keyCode)
 		{
-			for(int i = 0; i < keys.size() && (k.getID() == keyCode); i++)
+			for(int i = 0; i < keys.size(); i++)
 			{
 				k = keys.get(i);
 				
@@ -141,9 +141,11 @@ public class KeyManager
 					k.pressed();
 					if(lastKeyReleased != null)
 					{
+						System.out.println("2");
 						lastKeyReleased.setNextKey(keyCode);
 					}
 					lastKeyReleased = k;
+					break;
 			
 				}
 			}	
@@ -151,12 +153,13 @@ public class KeyManager
 		
 		public void alertKeyReleased(int keyCode)
 		{
-			for(int i = 0; i < keys.size() && (k.getID() == keyCode) ; i++)
+			for(int i = 0; i < keys.size(); i++)
 			{
 				k = keys.get(i);
 				if(k.getID() == keyCode)
 				{
 					k.released();
+					break;
 				}
 			}
 			

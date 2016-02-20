@@ -62,6 +62,11 @@ public class UserData {
 		authorizedUsers.add(user);
 	}
 	
+	public void removeAuthorizedUser(int index)
+	{
+		authorizedUsers.remove(index);
+	}
+	
 	public ArrayList<String> getAuthorizedUsers(){
 		return authorizedUsers;
 	}

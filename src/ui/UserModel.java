@@ -4,30 +4,44 @@ import java.util.ArrayList;
 
 import javax.swing.AbstractListModel;
 
+import typo.UserData;
+
 public class UserModel extends AbstractListModel<Object>
 {
-	private ArrayList<String> users;
+	private UserData data;
 	
-	public UserModel()
+	public UserModel(UserData data)
 	{
-		users = new ArrayList<String>();
-		users.add("poop");
-		users.add("shit");
+		this.data = data;
 	}
 	
 	@Override
 	public Object getElementAt(int index)
 	{
-		if(index >= users.size() || index < 0)
+		if(index >= data.getAuthorizedUsers().size() || index < 0)
 			return null;
 		
-		return users.get(index);
+		return data.getAuthorizedUsers().get(index);
 	}
 
 	@Override
 	public int getSize()
 	{
-		return users.size();
+		return data.getAuthorizedUsers().size();
+	}
+	
+	public void addUser(String userName)
+	{
+		data.addAuthorizedUser(userName);
+		data.writeToFile();
+		fireContentsChanged(data.getAuthorizedUsers(), 0, getSize());
+	}
+	
+	public void removeUser(int index)
+	{
+		data.removeAuthorizedUser(index);
+		data.writeToFile();
+		fireContentsChanged(data.getAuthorizedUsers(), 0, getSize());
 	}
 
 }

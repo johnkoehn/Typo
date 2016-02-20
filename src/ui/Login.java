@@ -5,12 +5,16 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import javafx.scene.control.PasswordField;
 import sun.util.logging.resources.logging;
+import typo.UserData;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,11 +24,13 @@ import java.awt.event.KeyListener;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class Login extends JFrame {
+public class Login extends JFrame 
+{
 
 	private JPanel contentPane;
 	private JTextField userField;
-	private JTextField passwordField;
+	private JPasswordField passwordField;
+	private UserData userData;
 
 	/**
 	 * Launch the application.
@@ -52,6 +58,9 @@ public class Login extends JFrame {
 	 */
 	public Login() 
 	{
+		//init UserData
+		userData = new UserData();
+		
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -81,7 +90,7 @@ public class Login extends JFrame {
 		passwordLabel.setBounds(29, 168, 107, 20);
 		contentPane.add(passwordLabel);
 		
-		passwordField = new JTextField();
+		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Verdana", Font.PLAIN, 12));
 		passwordField.setColumns(10);
 		passwordField.setBounds(29, 199, 144, 20);
@@ -137,9 +146,33 @@ public class Login extends JFrame {
 		
 	}
 	
-	private boolean checkLogin()
+	private void checkLogin()
 	{
-		return false;
+		if(userData.getUsername().equals(userField.getText()) && userData.getPassword().equals(passwordField.getText()))
+		{
+			//successful login, dispose current window and open MainUI
+			dispose();
+			EventQueue.invokeLater(new Runnable()
+			{
+				
+				@Override
+				public void run()
+				{
+					MainUI ui = new MainUI(new UserData());
+					ui.setVisible(true);
+					
+				}
+			});
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(new JFrame(), "Invalid Username or Password!!");
+			
+			//clear password field
+			passwordField.setText("");
+			revalidate();
+		}
+			
 	}
 	
 }

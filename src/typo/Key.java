@@ -20,6 +20,7 @@ public class Key
 	public Key(int ID)
 	{ 
 		KeyID = ID;
+		dManager = new DwellTimeManager(ID);
 	}
 	
 	public int getID()
@@ -78,5 +79,9 @@ public class Key
 		return nextKeyID;
 	}
 	
+	public void write()
+	{
+		dManager.write("test");
+	}
 	
 }

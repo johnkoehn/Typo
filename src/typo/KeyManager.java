@@ -1,9 +1,5 @@
 package typo;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -12,6 +8,8 @@ import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
+
+import java.util.logging.*;
 
 
 public class KeyManager
@@ -93,6 +91,8 @@ public class KeyManager
 	{
 		 try {
 	         GlobalScreen.registerNativeHook();
+	         Logger logger = Logger.getLogger(GlobalScreen.class.getPackage().getName());
+	         logger.setLevel(Level.OFF);
 	     }
 	     catch (NativeHookException ex) {
 	         System.err.println("There was a problem registering the native hook.");
@@ -105,9 +105,9 @@ public class KeyManager
 		
 			@Override
 			public void nativeKeyReleased(NativeKeyEvent e)
-			{	
-				
+			{
 				System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+				currKeyReleased = new Key(e.getKeyCode());
 				alertKeyReleased(e.getKeyCode());
 			}
 			
@@ -117,8 +117,7 @@ public class KeyManager
 				int keyID = e.getKeyCode();
 				alertKeyPressed(keyID);
 				System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-				
-
+			
 				lastKeyReleased = currKeyReleased;
 			}
 
@@ -133,34 +132,45 @@ public class KeyManager
 	
 		public void alertKeyPressed(int keyCode)
 		{
-			for(int i = 0; i < keys.size(); i++)
+			for(int i = 0; i < keys.size() && (k.getID() == keyCode); i++)
 			{
 				k = keys.get(i);
 				
 				if(k.getID() == keyCode)
 				{
 					k.pressed();
-					if(lastKeyPressed != null)
+					if(lastKeyReleased != null)
 					{
-						lastKeyPressed.setNextKey(keyCode);
+						lastKeyReleased.setNextKey(keyCode);
 					}
-					lastKeyPressed = k;
+					lastKeyReleased = k;
+			
 				}
 			}	
 		}
 		
 		public void alertKeyReleased(int keyCode)
 		{
-			for(int i = 0; i < keys.size(); i++)
+			for(int i = 0; i < keys.size() && (k.getID() == keyCode) ; i++)
 			{
 				k = keys.get(i);
-				
 				if(k.getID() == keyCode)
 				{
 					k.released();
-					
 				}
 			}
+			
+			System.out.println("Last Key Pressed: " + NativeKeyEvent.getKeyText(lastKeyReleased.getID()) + "\n");
 		}
-	}
+		
+		public void write()
+		{
+			for(Key key : keys)
+			{
+				key.write();
+			}
+		}
+}
+	
+	
 

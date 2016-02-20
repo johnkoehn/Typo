@@ -1,5 +1,7 @@
 package typo;
 
+import org.jnativehook.keyboard.NativeKeyEvent;
+
 public class DwellTime
 {
 	private int id;
@@ -66,6 +68,6 @@ public class DwellTime
 	
 	public String write()
 	{
-		return masterId + "," + id + "," + avgTime;
+		return NativeKeyEvent.getKeyText(masterId) + "," + NativeKeyEvent.getKeyText(id) + "," + avgTime;
 	}
 }

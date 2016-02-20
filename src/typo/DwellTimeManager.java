@@ -9,7 +9,7 @@ import org.jnativehook.keyboard.NativeKeyEvent;
 
 public class DwellTimeManager
 {
-	private ArrayList<DwellTime> dTimes;
+	private ArrayList<DwellTime> dTimes = new ArrayList<DwellTime>();
 	
 	private int masterId;
 	

@@ -34,11 +34,11 @@ public class UserData {
 			while(scan.hasNextLine()){
 				
 				if(i == 0)
-					username = scan.nextLine();
+					username = Encryptor.decrypt(scan.nextLine());
 				else if(i==1)
-					password = scan.nextLine();
+					password = Encryptor.decrypt(scan.nextLine());
 				else
-					authorizedUsers.add(scan.nextLine());
+					authorizedUsers.add(Encryptor.decrypt(scan.nextLine()));
 			
 				i += 1;
 			}
@@ -77,10 +77,10 @@ public class UserData {
 		PrintWriter output;
 		try {
 			output = new PrintWriter(input);
-			output.println(username);
-			output.println(password);
+			output.println(Encryptor.encrypt(username));
+			output.println(Encryptor.encrypt(password));
 			for(int i=0; i < authorizedUsers.size(); i += 1){
-				output.println(authorizedUsers.get(i));
+				output.println(Encryptor.encrypt(authorizedUsers.get(i)));
 				
 			}
 			output.close();

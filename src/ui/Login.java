@@ -16,12 +16,18 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JTextField;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class Login extends JFrame 
@@ -31,6 +37,7 @@ public class Login extends JFrame
 	private JTextField userField;
 	private JPasswordField passwordField;
 	private UserData userData;
+	private BufferedImage image;
 
 	/**
 	 * Launch the application.
@@ -69,36 +76,45 @@ public class Login extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel loginLabel = new JLabel("Typo Login");
-		loginLabel.setFont(new Font("Verdana", Font.PLAIN, 35));
-		loginLabel.setBounds(116, 33, 191, 44);
-		contentPane.add(loginLabel);
-		
 		JLabel lblUser = new JLabel("Username");
 		lblUser.setFont(new Font("Verdana", Font.PLAIN, 20));
-		lblUser.setBounds(29, 88, 107, 38);
+		lblUser.setBounds(29, 119, 107, 38);
 		contentPane.add(lblUser);
 		
 		userField = new JTextField();
 		userField.setFont(new Font("Verdana", Font.PLAIN, 12));
-		userField.setBounds(29, 137, 144, 20);
+		userField.setBounds(29, 168, 144, 20);
 		contentPane.add(userField);
 		userField.setColumns(10);
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setFont(new Font("Verdana", Font.PLAIN, 20));
-		passwordLabel.setBounds(29, 168, 107, 20);
+		passwordLabel.setBounds(29, 199, 107, 20);
 		contentPane.add(passwordLabel);
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Verdana", Font.PLAIN, 12));
 		passwordField.setColumns(10);
-		passwordField.setBounds(29, 199, 144, 20);
+		passwordField.setBounds(29, 230, 144, 20);
 		contentPane.add(passwordField);
 		
 		JButton loginButton = new JButton("Login");
-		loginButton.setBounds(238, 163, 107, 38);
+		loginButton.setBounds(238, 181, 107, 38);
 		contentPane.add(loginButton);
+		
+
+		//load Typo logo
+		try
+		{
+			image = ImageIO.read(new File("logo_2.png"));
+			JLabel logo = new JLabel(new ImageIcon(image));
+			logo.setBounds(10, 11, 368, 118);
+			contentPane.add(logo);
+		}
+		catch (IOException ex)
+		{
+			ex.printStackTrace();
+		}
 		
 		//add action listener for login button to check is the username and password are correct
 		loginButton.addActionListener(new ActionListener()
@@ -144,6 +160,7 @@ public class Login extends JFrame
 			}
 		});
 		
+
 	}
 	
 	private void checkLogin()
@@ -174,5 +191,4 @@ public class Login extends JFrame
 		}
 			
 	}
-	
 }

@@ -6,7 +6,7 @@ public class DwellTime
 {
 	private int id;
 	private int masterId;
-	int recordings = 2;
+	int recordings = 3;
 	int times[] = new int[10];
 	int avgTime = 0;
 	boolean first = true;
@@ -21,14 +21,17 @@ public class DwellTime
 	
 	public DwellTime(int id,int masterId, int avg, int timesPressed)
 	{
+		
+		
+		this.id = id;
+		this.masterId = masterId;
+		index = times.length - timesPressed;
+		
 		if(index != times.length)
 		{
 			first = false;
 		}
 		
-		this.id = id;
-		this.masterId = masterId;
-		index = times.length - timesPressed;
 		if(index < 0)
 		{
 			index = 0;
@@ -45,7 +48,7 @@ public class DwellTime
 		if(!first)
 		{
 			//check that the time is not out of sync (only do this if we already have 2 recordings)
-			if((times.length - index) >= recordings && (time > avgTime+18 || time < avgTime-18))
+			if((times.length - index) >= recordings && (time > avgTime+15 || time < avgTime-15))
 			{
 				return;
 			}

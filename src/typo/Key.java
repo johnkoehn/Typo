@@ -82,7 +82,6 @@ public class Key
 		{
 			handleKeyPress();
 			validateKey();
-			System.out.println("1");
 			keyEdgeCase = false;
 		}
 		else
@@ -99,7 +98,8 @@ public class Key
 	
 	public void validateKey()
 	{
-			if(KeyManager.validate){
+		if(KeyManager.validate)
+		{
 			int value = dManager.validate(nextKeyID, dwellTime);
 			System.out.println(value);
 			//make sure the validation worked
@@ -107,11 +107,12 @@ public class Key
 			{
 				KeyManager.checkedKeyPresses[KeyManager.count] = value; 
 				KeyManager.count += 1;
+				System.out.println(KeyManager.count);
 			}
 			
 			if(KeyManager.count == KeyManager.numberOfCheckedKeyPresses)
 			{
-				KeyManager.validate(this);
+				KeyManager.validate();
 			}
 		}
 	}

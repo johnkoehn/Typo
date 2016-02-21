@@ -31,6 +31,7 @@ public class MainUI extends JFrame
 	private JList userList;
 	private UserModel userModel;
 	private JScrollPane scrollPaneList;
+	private long time = 10000;
 
 	/**
 	 * Launch the application.
@@ -138,7 +139,7 @@ public class MainUI extends JFrame
 										try
 										{
 											Thread.sleep(1);
-											if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > 30000)
+											if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > time)
 											{
 												KeyManager.validate = true;
 												
@@ -255,7 +256,7 @@ public class MainUI extends JFrame
 									try
 									{
 										Thread.sleep(1);
-										if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > 30000)
+										if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > time)
 										{
 											KeyManager.validate = true;
 											

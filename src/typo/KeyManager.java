@@ -24,7 +24,7 @@ public class KeyManager
 	Key currPressed;
 	Key lastReleased;
 	
-	static int numberOfCheckedKeyPresses = 10;
+	static int numberOfCheckedKeyPresses = 50;
 	static int[] checkedKeyPresses = new int[numberOfCheckedKeyPresses];
 	static int count = 0;
 	public static boolean validate = false;
@@ -187,7 +187,7 @@ public class KeyManager
 			@Override
 			public void nativeKeyReleased(NativeKeyEvent e)
 			{
-				System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+				//System.out.println("Key Released: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 				//currKeyReleased = new Key(e.getKeyCode());
 				alertKeyReleased(e.getKeyCode());
 			}
@@ -198,14 +198,14 @@ public class KeyManager
 				timeOfLastKeyPress = System.currentTimeMillis();
 				int keyID = e.getKeyCode();
 				alertKeyPressed(keyID);
-				System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
+				///System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 				//lastKeyReleased = currKeyReleased;
 			}
 
 			@Override
 			public void nativeKeyTyped(NativeKeyEvent e)
 			{
-				System.out.println("Key Typed: " + e.getKeyChar());
+				//System.out.println("Key Typed: " + e.getKeyChar());
 			}
 		}
      );
@@ -264,11 +264,12 @@ public class KeyManager
 			}
 		}
 		
-		public static void validate(Key c)
+		public static void validate()
 		{
-			double numPasses = 0;
-			double numFails = 0;
+				double numPasses = 0;
+				double numFails = 0;
 			
+				
 				for(int i = 0; i < numberOfCheckedKeyPresses; i++)
 				{
 					if(checkedKeyPresses[i] == 1)
@@ -281,16 +282,53 @@ public class KeyManager
 					}
 				}
 				
-				if(numPasses/(numFails + numPasses) >= .70)
+				if(numPasses/(numberOfCheckedKeyPresses) >= .50)
 				{
+					int numPass = 0;
+					int numFail = 0;
+					
 					System.out.println("Passed");
 					validate = false;
 					count = 0;
+					numPasses = 0;
+					numFails = 0;
+					for(int j = 0; j < numberOfCheckedKeyPresses; j++)
+					{
+						if(checkedKeyPresses[j] == 1)
+						{
+							numPass++;
+						}
+						else if(checkedKeyPresses[j] == 0)
+						{
+							numFail++;
+						}
+					}
+					
+					System.out.println("Fails: " + numFail);
+					System.out.println("Pass; " + numPass);
 				}
 				else
 				{
+					int numPass = 0;
+					int numFail = 0;
+					for(int j = 0; j < numberOfCheckedKeyPresses; j++)
+					{
+						if(checkedKeyPresses[j] == 1)
+						{
+							numPass++;
+						}
+						else if(checkedKeyPresses[j] == 0)
+						{
+							numFail++;
+						}
+					}
+					
+					System.out.println("Fails: " + numFail);
+					System.out.println("Pass; " + numPass);
 					System.out.println("Failed");
 					count = 0;
+					numPasses = 0;
+					numFails = 0;
 					Runtime rt = Runtime.getRuntime();
 					
 					try
@@ -302,7 +340,7 @@ public class KeyManager
 						e.printStackTrace();
 					}
 				}
-			}	
+		}
 		
 		public void write()
 		{

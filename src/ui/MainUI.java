@@ -32,6 +32,7 @@ public class MainUI extends JFrame
 	private UserModel userModel;
 	private JScrollPane scrollPaneList;
 	private long time = 10000;
+	private int learnValue = 100;
 
 	/**
 	 * Launch the application.
@@ -110,13 +111,21 @@ public class MainUI extends JFrame
 								@Override
 								public void run()
 								{
-									while(true)
+									boolean training = true;
+									while(training)
 									{
 										try
 										{
-											Thread.sleep(30000);
-											mang.write();
-											mang.writeBig();
+											Thread.sleep(5);
+											if(mang.keysPressed > learnValue)
+											{
+												mang.write();
+												mang.writeBig();
+												mang.stop();
+												training = false;
+												messageDialog.dispose();
+											}
+
 										} catch (InterruptedException e)
 										{
 											// TODO Auto-generated catch block
@@ -128,32 +137,6 @@ public class MainUI extends JFrame
 							});
 							
 							thred.start();
-							
-							Thread validationThread = new Thread(new Runnable()
-							{
-								@Override
-								public void run()
-								{
-									while(true)
-									{
-										try
-										{
-											Thread.sleep(1);
-											if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > time)
-											{
-												KeyManager.validate = true;
-												
-											}
-										} catch (InterruptedException e)
-										{
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-										
-									}	
-								}
-							});
-							validationThread.start();
 							
 						}
 					});

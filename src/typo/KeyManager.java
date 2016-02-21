@@ -34,7 +34,7 @@ public class KeyManager
 	Key currKeyReleased;
 
 	//Key lastKeyPressed;
-	
+	public int keysPressed = 0;
 	private String user;
 	boolean hasNextKeyTyped;	
 	
@@ -198,6 +198,7 @@ public class KeyManager
 				timeOfLastKeyPress = System.currentTimeMillis();
 				int keyID = e.getKeyCode();
 				alertKeyPressed(keyID);
+				keysPressed += 1;
 				///System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 				//lastKeyReleased = currKeyReleased;
 			}
@@ -366,6 +367,18 @@ public class KeyManager
 				
 				writer.close();
 			} catch (FileNotFoundException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		public void stop()
+		{
+			try
+			{
+				GlobalScreen.unregisterNativeHook();
+			} catch (NativeHookException e)
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();

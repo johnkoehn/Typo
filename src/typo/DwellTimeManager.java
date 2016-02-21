@@ -42,6 +42,23 @@ public class DwellTimeManager
 		dTimes.add(new DwellTime(NativeKeyEvent.VC_Y, masterId));
 		dTimes.add(new DwellTime(NativeKeyEvent.VC_Z, masterId));
 		dTimes.add(new DwellTime(NativeKeyEvent.VC_SPACE, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_BACKSPACE, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_ENTER, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_COMMA, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_PERIOD, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_SEMICOLON, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_SHIFT_L, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_SHIFT_R, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_0, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_1, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_2, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_3, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_4, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_5, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_6, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_7, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_8, masterId));
+		dTimes.add(new DwellTime(NativeKeyEvent.VC_9, masterId));
 		
 		this.masterId = masterId;
 	}
@@ -246,6 +263,70 @@ public class DwellTimeManager
 			scan.next();
 			scan.next();
 			dTimes.add(new DwellTime(NativeKeyEvent.VC_SPACE, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_BACKSPACE, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_ENTER, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_SHIFT_L, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_SHIFT_R, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_PERIOD, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_SEMICOLON, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_COMMA, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_0, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_1, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_2, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_3, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_4, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_5, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_6, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_8, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_9, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
 			
 			
 			scan.close();

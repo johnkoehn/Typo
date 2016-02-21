@@ -101,7 +101,7 @@ public class Key
 	{
 			if(KeyManager.validate){
 			int value = dManager.validate(nextKeyID, dwellTime);
-			
+			System.out.println(value);
 			//make sure the validation worked
 			if(value != 2 && KeyManager.count < KeyManager.numberOfCheckedKeyPresses)
 			{

@@ -24,6 +24,10 @@ public class DwellTime
 		this.id = id;
 		this.masterId = masterId;
 		index = times.length - timesPressed;
+		if(index < 0)
+		{
+			index = 0;
+		}
 		avgTime = avg;
 		for(int i = times.length - 1; i >= index; i -= 1){
 			times[i] = avg;

@@ -29,10 +29,79 @@ public class KeyManager
 	private String user;
 	boolean hasNextKeyTyped;	
 	
-	public KeyManager(String user)
+	public KeyManager(String user, boolean newUser)
 	{
 		keys = new ArrayList<Key>();
 		this.user = user;
+		
+		if(newUser)
+		{
+			//Adds all of the keys to ArrayList<Key> keys
+			k = new Key(NativeKeyEvent.VC_A);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_B);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_C);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_D);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_E);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_F);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_G);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_H);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_I);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_J);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_K);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_L);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_M);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_N);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_O);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_P);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_Q);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_R);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_S);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_T);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_U);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_V);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_W);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_X);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_Y);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_Z);
+			keys.add(k);	
+			k = new Key(NativeKeyEvent.VC_SPACE);
+			keys.add(k);
+		}
+		else
+		{
+			loadKeyData();
+		}
+
+	
+	}
+	
+	private void loadKeyData()
+	{
 		//Adds all of the keys to ArrayList<Key> keys
 		k = new Key(NativeKeyEvent.VC_A);
 		keys.add(k);
@@ -87,7 +156,7 @@ public class KeyManager
 		k = new Key(NativeKeyEvent.VC_Z);
 		keys.add(k);	
 		k = new Key(NativeKeyEvent.VC_SPACE);
-		keys.add(k);	
+		keys.add(k);
 	}
 	
 	public void createListener()

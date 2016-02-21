@@ -45,6 +45,13 @@ public class DwellTimeManager
 		this.masterId = masterId;
 	}
 	
+	public DwellTimeManager(int masterId, String user)
+	{
+		this.masterId = masterId;
+		
+		//read in data
+	}
+	
 	public void pressed(int id, int time){
 		//loop through array, look for dwellTime that has the id, call .recieve(time)
 		for(int i = 0; i < dTimes.size(); i += 1){

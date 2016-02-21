@@ -6,7 +6,7 @@ public class Main1
 	public static void main(String[] args)
 	{
 		
-		KeyManager mang = new KeyManager("PLACEHOLDER");
+		KeyManager mang = new KeyManager("PLACEHOLDER", true);
 		mang.createListener();
 		
 		Thread thred = new Thread(new Runnable()

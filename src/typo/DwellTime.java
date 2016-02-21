@@ -19,6 +19,11 @@ public class DwellTime
 		index = times.length;
 	}
 	
+	public DwellTime(int id, int masterId, int avg, int timesPressed)
+	{
+		
+	}
+	
 	public void receive(int time)
 	{
 		//check if this is the first time received
@@ -73,7 +78,7 @@ public class DwellTime
 	public int getTime()
 	{
 		return avgTime;
-	}
+	} 
 	
 	public String write()
 	{

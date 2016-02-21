@@ -25,6 +25,13 @@ public class Key
 		dManager = new DwellTimeManager(ID);
 	}
 	
+	//constructor for new user
+	public Key(int ID, String user)
+	{
+		KeyID = ID;
+		dManager = new DwellTimeManager(ID, user);
+	}
+	
 	public int getID()
 	{
 		return KeyID;

@@ -39,6 +39,10 @@ public class UserModel extends AbstractListModel<Object>
 	
 	public void removeUser(int index)
 	{
+		if(index < 0)
+		{
+			return;
+		}
 		data.removeAuthorizedUser(index);
 		data.writeToFile();
 		fireContentsChanged(data.getAuthorizedUsers(), 0, getSize());

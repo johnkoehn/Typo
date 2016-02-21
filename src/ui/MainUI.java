@@ -10,11 +10,14 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
 import jdk.nashorn.internal.scripts.JO;
+import typo.KeyManager;
 import typo.UserData;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JDialog;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -82,6 +85,78 @@ public class MainUI extends JFrame
 				{
 					userModel.addUser(name);
 					revalidate();	
+					
+					JDialog messageDialog = new JDialog(MainUI.this, "Learning your typing patterns");
+					//messageDialog.setTitle("Learning");
+					messageDialog.setSize(300, 150);
+					messageDialog.setLocationRelativeTo(MainUI.this);
+					messageDialog.add(new JLabel("Learning your typing patterns!"));
+					//messageDialog.setModalityType(Dialog.ModalityType.APPLICATION_MODAL);
+					messageDialog.setVisible(true);
+					
+					//launch a session
+					EventQueue.invokeLater(new Runnable()
+					{
+						
+						@Override
+						public void run()
+						{
+							KeyManager mang = new KeyManager(name, true);
+							mang.createListener();
+							
+							Thread thred = new Thread(new Runnable()
+							{
+								@Override
+								public void run()
+								{
+									while(true)
+									{
+										try
+										{
+											Thread.sleep(30000);
+											mang.write();
+											mang.writeBig();
+										} catch (InterruptedException e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										
+									}	
+								}
+							});
+							
+							thred.start();
+							
+							Thread validationThread = new Thread(new Runnable()
+							{
+								@Override
+								public void run()
+								{
+									while(true)
+									{
+										try
+										{
+											Thread.sleep(1);
+											if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > 30000)
+											{
+												KeyManager.validate = true;
+												
+											}
+										} catch (InterruptedException e)
+										{
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+										
+									}	
+								}
+							});
+							validationThread.start();
+							
+						}
+					});
+					
 				}
 				else 
 				{
@@ -102,6 +177,14 @@ public class MainUI extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
+				int index = userList.getSelectedIndex();
+				
+				if(index < 0)
+				{
+					JOptionPane.showMessageDialog(MainUI.this, "Please select a user to remove!");
+					return;
+				}
+				
 				userModel.removeUser(userList.getSelectedIndex());
 				revalidate();
 				
@@ -120,8 +203,76 @@ public class MainUI extends JFrame
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				setVisible(false);
+				int index = userList.getSelectedIndex();
 				
+				if(index < 0)
+				{
+					JOptionPane.showMessageDialog(MainUI.this, "Please select a user to start the session as!");
+					return;
+				}
+				
+				setVisible(false);
+				EventQueue.invokeLater(new Runnable()
+				{
+					
+					@Override
+					public void run()
+					{
+						KeyManager mang = new KeyManager((String)userModel.getElementAt(index), false);
+						mang.createListener();
+						
+						Thread thred = new Thread(new Runnable()
+						{
+							@Override
+							public void run()
+							{
+								while(true)
+								{
+									try
+									{
+										Thread.sleep(30000);
+										mang.write();
+										mang.writeBig();
+									} catch (InterruptedException e)
+									{
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									
+								}	
+							}
+						});
+						
+						thred.start();
+						
+						Thread validationThread = new Thread(new Runnable()
+						{
+							@Override
+							public void run()
+							{
+								while(true)
+								{
+									try
+									{
+										Thread.sleep(1);
+										if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > 30000)
+										{
+											KeyManager.validate = true;
+											
+										}
+									} catch (InterruptedException e)
+									{
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									
+								}	
+							}
+						});
+						validationThread.start();
+						
+					}
+				});
 			}
 		});
 		

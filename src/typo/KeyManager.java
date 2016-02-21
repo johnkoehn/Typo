@@ -22,7 +22,7 @@ public class KeyManager
 	Key currPressed;
 	Key lastReleased;
 	
-	static int numberOfCheckedKeyPresses = 50;
+	static int numberOfCheckedKeyPresses = 25;
 	static int[] checkedKeyPresses = new int[numberOfCheckedKeyPresses];
 	static int count = 0;
 	static boolean validate = false;

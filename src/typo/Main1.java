@@ -46,7 +46,6 @@ public class Main1
 						if((System.currentTimeMillis() - KeyManager.timeOfLastKeyPress) > 30000)
 						{
 							KeyManager.validate = true;
-							System.out.println("test");
 							
 						}
 					} catch (InterruptedException e)

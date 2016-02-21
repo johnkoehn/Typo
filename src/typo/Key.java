@@ -1,5 +1,7 @@
 package typo;
 
+import java.util.ArrayList;
+
 public class Key
 {
 	private DwellTimeManager dManager;
@@ -21,6 +23,13 @@ public class Key
 	{ 
 		KeyID = ID;
 		dManager = new DwellTimeManager(ID);
+	}
+	
+	//constructor for new user
+	public Key(int ID, String user)
+	{
+		KeyID = ID;
+		dManager = new DwellTimeManager(ID, user);
 	}
 	
 	public int getID()
@@ -107,9 +116,13 @@ public class Key
 		}
 	}
 	
-	public void write()
+	public void write(String user)
 	{
-		dManager.write("test");
+		dManager.write(user);
+	}
+	
+	public ArrayList<String> writeBig(){
+		return dManager.writeBig();
 	}
 	
 }

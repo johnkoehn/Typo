@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.jnativehook.keyboard.NativeKeyEvent;
 
@@ -43,6 +44,218 @@ public class DwellTimeManager
 		dTimes.add(new DwellTime(NativeKeyEvent.VC_SPACE, masterId));
 		
 		this.masterId = masterId;
+	}
+	
+	public DwellTimeManager(int masterId, String user)
+	{
+		this.masterId = masterId;
+		File file = new File("");
+		
+		//read in data
+		switch(masterId){
+		case(NativeKeyEvent.VC_A):
+			file = new File(user + "_A");
+			break;
+		case(NativeKeyEvent.VC_B):
+			file = new File(user + "_B");
+			break;
+		case(NativeKeyEvent.VC_C):
+			file = new File(user + "_C");
+			break;
+		case(NativeKeyEvent.VC_D):
+			file = new File(user + "_D");
+			break;
+		case(NativeKeyEvent.VC_E):
+			file = new File(user + "_E");
+			break;
+		case(NativeKeyEvent.VC_F):
+			file = new File(user + "_F");
+			break;
+		case(NativeKeyEvent.VC_G):
+			file = new File(user + "_G");
+			break;
+		case(NativeKeyEvent.VC_H):
+			file = new File(user + "_H");
+			break;
+		case(NativeKeyEvent.VC_I):
+			file = new File(user + "_I");
+			break;
+		case(NativeKeyEvent.VC_J):
+			file = new File(user + "_J");
+			break;
+		case(NativeKeyEvent.VC_K):
+			file = new File(user + "_K");
+			break;
+		case(NativeKeyEvent.VC_L):
+			file = new File(user + "_L");
+			break;
+		case(NativeKeyEvent.VC_M):
+			file = new File(user + "_M");
+			break;
+		case(NativeKeyEvent.VC_N):
+			file = new File(user + "_N");
+			break;
+		case(NativeKeyEvent.VC_O):
+			file = new File(user + "_O");
+			break;
+		case(NativeKeyEvent.VC_P):
+			file = new File(user + "_P");
+			break;
+		case(NativeKeyEvent.VC_Q):
+			file = new File(user + "_Q");
+			break;
+		case(NativeKeyEvent.VC_R):
+			file = new File(user + "_R");
+			break;
+		case(NativeKeyEvent.VC_S):
+			file = new File(user + "_S");
+			break;
+		case(NativeKeyEvent.VC_T):
+			file = new File(user + "_T");
+			break;
+		case(NativeKeyEvent.VC_U):
+			file = new File(user + "_U");
+			break;
+		case(NativeKeyEvent.VC_V):
+			file = new File(user + "_V");
+			break;
+		case(NativeKeyEvent.VC_W):
+			file = new File(user + "_W");
+			break;
+		case(NativeKeyEvent.VC_X):
+			file = new File(user + "_X");
+			break;
+		case(NativeKeyEvent.VC_Y):
+			file = new File(user + "_Y");
+			break;
+		case(NativeKeyEvent.VC_Z):
+			file = new File(user + "_Z");
+			break;
+		case(NativeKeyEvent.VC_SPACE):
+			file = new File(user + "_SP");
+			break;
+	}
+		try
+		{
+			Scanner scan = new Scanner(file);
+			scan.useDelimiter(",");
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_A, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_B, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_C, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_D, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_E, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_F, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_G, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_H, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_I, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_J, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_K, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_L, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_M, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_N, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_O, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_P, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_Q, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_R, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_S, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_T, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_U, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_V, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_W, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_X, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_Y, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_Z, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			scan.next();
+			scan.next();
+			dTimes.add(new DwellTime(NativeKeyEvent.VC_SPACE, masterId, Integer.parseInt(scan.next()), Integer.parseInt(scan.next())));
+			
+			
+			scan.close();
+		} catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	public void pressed(int id, int time){
@@ -182,6 +395,14 @@ public class DwellTimeManager
 			}
 		}
 		return - 1;
+	}
+	
+	public ArrayList<String> writeBig(){
+		ArrayList<String> lines= new ArrayList<String>();
+		for(int i = 0; i < dTimes.size(); i += 1){
+			lines.add(dTimes.get(i).write());
+		}
+		return lines;
 	}
 	
 }

@@ -57,6 +57,11 @@ public class DwellTime
 		avgTime = sum/count;
 	}
 	
+	public int getNumberKeyPresses()
+	{
+		return times.length - index;
+	}
+	
 	public int getId()
 	{
 		return id;
@@ -65,6 +70,25 @@ public class DwellTime
 	public int getTime()
 	{
 		return avgTime;
+	}
+	
+	public int validate(int time)
+	{	
+		//not able to check do to lack of key presses
+		if(getNumberKeyPresses() <= 3)
+		{
+			return 2;
+		}
+		
+		//fails the test due to range it is from average
+		else if(time >= (avgTime + 15) || time <= (avgTime - 15))
+		{
+			return 0;
+		}
+		
+		//Passes test
+		else
+			return 1;
 	}
 	
 	public String write()

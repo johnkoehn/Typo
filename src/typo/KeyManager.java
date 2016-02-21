@@ -20,9 +20,16 @@ public class KeyManager
 	Key currPressed;
 	Key lastReleased;
 	
-	Key lastKeyReleased;
+	static int numberOfCheckedKeyPresses = 50;
+	static int[] checkedKeyPresses = new int[numberOfCheckedKeyPresses];
+	static int count = 0;
+	static boolean validate = false;
+	static long timeOfLastKeyPress = System.currentTimeMillis();
+	
+	static Key lastKeyReleased;
 	Key currKeyReleased;
-	Key lastKeyPressed;
+
+	//Key lastKeyPressed;
 	
 	boolean hasNextKeyTyped;	
 	
@@ -114,10 +121,10 @@ public class KeyManager
 			@Override
 			public void nativeKeyPressed(NativeKeyEvent e)
 			{
+				timeOfLastKeyPress = System.currentTimeMillis();
 				int keyID = e.getKeyCode();
 				alertKeyPressed(keyID);
 				System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
-			
 				//lastKeyReleased = currKeyReleased;
 			}
 
@@ -132,23 +139,42 @@ public class KeyManager
 	
 		public void alertKeyPressed(int keyCode)
 		{
+			if(isKeyUsed(keyCode) == false)
+			{
+				lastKeyReleased = k;
+			}
+			
+			else
+			{
+				for(int i = 0; i < keys.size(); i++)
+				{
+					k = keys.get(i);
+					
+					if(k.getID() == keyCode)
+					{
+						k.pressed();
+						if(lastKeyReleased != null)
+						{
+							lastKeyReleased.setNextKey(keyCode);
+						}
+						lastKeyReleased = k;
+						break;
+					}
+				}	
+			}
+		}
+		
+		public boolean isKeyUsed(int keyCode)
+		{
+			boolean used = false;
 			for(int i = 0; i < keys.size(); i++)
 			{
-				k = keys.get(i);
-				
-				if(k.getID() == keyCode)
+				if(keyCode == keys.get(i).getID())
 				{
-					k.pressed();
-					if(lastKeyReleased != null)
-					{
-						System.out.println("2");
-						lastKeyReleased.setNextKey(keyCode);
-					}
-					lastKeyReleased = k;
-					break;
-			
+					used = true;
 				}
-			}	
+			}
+			return used;
 		}
 		
 		public void alertKeyReleased(int keyCode)
@@ -162,9 +188,37 @@ public class KeyManager
 					break;
 				}
 			}
-			
-			System.out.println("Last Key Pressed: " + NativeKeyEvent.getKeyText(lastKeyReleased.getID()) + "\n");
 		}
+		
+		public static void validate(Key c)
+		{
+			double numPasses = 0;
+			double numFails = 0;
+			
+				for(int i = 0; i < numberOfCheckedKeyPresses; i++)
+				{
+					if(checkedKeyPresses[i] == 1)
+					{
+						numPasses++;
+					}
+					else if(checkedKeyPresses[i] == 0)
+					{
+						numFails++;
+					}
+				}
+				
+				if(numPasses/(numFails + numPasses) >= .70)
+				{
+					System.out.println("Passed");
+					validate = false;
+					count = 0;
+				}
+				else
+				{
+					System.out.println("Failed");
+					count = 0;
+				}
+			}	
 		
 		public void write()
 		{

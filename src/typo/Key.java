@@ -42,9 +42,10 @@ public class Key
 		pressed = false;
 		released = true;
 		
-		if(keyEdgeCase == true)
+		if(keyEdgeCase == true);
 		{
 			handleKeyPress();
+			validateKey();
 		}
 	}
 	
@@ -56,15 +57,22 @@ public class Key
 	
 	public void handleKeyPress()
 	{
-		dManager.pressed(nextKeyID, dwellTime);
+		if(!KeyManager.validate)
+		{
+			dManager.pressed(nextKeyID, dwellTime);
+		}
+		
 	}
 	
 	public void setNextKey(int ID)
 	{
 		keyEdgeCase = true;
+		nextKeyID = ID;
 		
-		if(released == true){
-			dManager.pressed(ID, dwellTime);
+		if(released == true)
+		{
+			handleKeyPress();
+			validateKey();
 			System.out.println("1");
 			keyEdgeCase = false;
 		}
@@ -72,12 +80,31 @@ public class Key
 		{
 			keyEdgeCase = true;
 		}
-		nextKeyID = ID;
+		
 	}
 	
 	public int getNextKey()
 	{
 		return nextKeyID;
+	}
+	
+	public void validateKey()
+	{
+			if(KeyManager.validate){
+			int value = dManager.validate(nextKeyID, dwellTime);
+			
+			//make sure the validation worked
+			if(value != 2 && KeyManager.count < KeyManager.numberOfCheckedKeyPresses)
+			{
+				KeyManager.checkedKeyPresses[KeyManager.count] = value; 
+				KeyManager.count += 1;
+			}
+			
+			if(KeyManager.count == KeyManager.numberOfCheckedKeyPresses)
+			{
+				KeyManager.validate(this);
+			}
+		}
 	}
 	
 	public void write()

@@ -159,10 +159,20 @@ public class DwellTimeManager
 			return false;
 		}
 		
-		
 		return true;
 	}
 	
+	public int validate(int ID, int time)
+	{
+		for(int i = 0; i < dTimes.size(); i++)
+		{
+			if(ID == dTimes.get(i).getId())
+			{
+				return dTimes.get(i).validate(time);
+			}
+		}
+		return 2;
+	}
 	
 	//-1 = not recording key
 	public int getTime(int id){

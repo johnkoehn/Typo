@@ -27,8 +27,8 @@ public class KeyManager
 	static int numberOfCheckedKeyPresses = 10;
 	static int[] checkedKeyPresses = new int[numberOfCheckedKeyPresses];
 	static int count = 0;
-	static boolean validate = false;
-	static long timeOfLastKeyPress = System.currentTimeMillis();
+	public static boolean validate = false;
+	public static long timeOfLastKeyPress = System.currentTimeMillis();
 	
 	static Key lastKeyReleased;
 	Key currKeyReleased;

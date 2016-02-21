@@ -12,6 +12,7 @@ public class UserData {
 	public String username;
 	public String password;
 	private ArrayList<String> authorizedUsers = new ArrayList<String>();
+	private ArrayList<String> newUsers = new ArrayList<String>();
 	private File input = new File("UserData.txt");
 	private Scanner scan;
 	

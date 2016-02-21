@@ -1,11 +1,14 @@
 package typo;
 
+import java.awt.EventQueue;
+
+import ui.Login;
+
 public class Main1
 {
 
 	public static void main(String[] args)
 	{
-		
 		KeyManager mang = new KeyManager("test", false);
 		mang.createListener();
 		

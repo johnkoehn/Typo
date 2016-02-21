@@ -52,7 +52,8 @@ public class DwellTimeManager
 		File file = new File("");
 		
 		//read in data
-		switch(masterId){
+		switch(masterId)
+		{
 		case(NativeKeyEvent.VC_A):
 			file = new File(user + "_A");
 			break;
@@ -133,6 +134,59 @@ public class DwellTimeManager
 			break;
 		case(NativeKeyEvent.VC_SPACE):
 			file = new File(user + "_SP");
+			break;
+		case(NativeKeyEvent.VC_ENTER):
+			file = new File(user + "_Enter");
+			break;
+		case(NativeKeyEvent.VC_COMMA):
+			file = new File(user + "_Comma");
+			break;
+		case(NativeKeyEvent.VC_PERIOD):
+			file = new File(user + "_Period");
+			break;
+		case(NativeKeyEvent.VC_SHIFT_L):
+			file = new File(user + "_Shift_L");
+			break;
+		case(NativeKeyEvent.VC_SHIFT_R):
+			file = new File(user + "_Shift_R");
+			break;
+		case(NativeKeyEvent.VC_SEMICOLON):
+			file = new File(user + "_Semicolon");
+			break;
+		case(NativeKeyEvent.VC_BACKSPACE):
+			file = new File(user + "_Backspace");
+			break;
+		case(NativeKeyEvent.VC_0):
+			file = new File(user + "_0");
+			break;
+		case(NativeKeyEvent.VC_1):
+			file = new File(user + "_1");
+			break;
+		case(NativeKeyEvent.VC_2):
+			file = new File(user + "_2");
+			break;
+		case(NativeKeyEvent.VC_3):
+			file = new File(user + "_3");
+			break;
+		case(NativeKeyEvent.VC_4):
+			file = new File(user + "_4");
+			break;
+		case(NativeKeyEvent.VC_5):
+			file = new File(user + "_5");
+			break;
+		case(NativeKeyEvent.VC_6):
+			file = new File(user + "_6");
+			break;
+		case(NativeKeyEvent.VC_7):
+			file = new File(user + "_7");
+			break;
+		case(NativeKeyEvent.VC_8):
+			file = new File(user + "_8");
+			break;
+		case(NativeKeyEvent.VC_9):
+			file = new File(user + "_9");
+			break;
+		default:
 			break;
 	}
 		try
@@ -353,6 +407,57 @@ public class DwellTimeManager
 				break;
 			case(NativeKeyEvent.VC_SPACE):
 				file = new File(user + "_SP");
+				break;
+			case(NativeKeyEvent.VC_ENTER):
+				file = new File(user + "_Enter");
+				break;
+			case(NativeKeyEvent.VC_COMMA):
+				file = new File(user + "_Comma");
+				break;
+			case(NativeKeyEvent.VC_PERIOD):
+				file = new File(user + "_Period");
+				break;
+			case(NativeKeyEvent.VC_SHIFT_L):
+				file = new File(user + "_Shift_L");
+				break;
+			case(NativeKeyEvent.VC_SHIFT_R):
+				file = new File(user + "_Shift_R");
+				break;
+			case(NativeKeyEvent.VC_SEMICOLON):
+				file = new File(user + "_Semicolon");
+				break;
+			case(NativeKeyEvent.VC_BACKSPACE):
+				file = new File(user + "_Backspace");
+				break;
+			case(NativeKeyEvent.VC_0):
+				file = new File(user + "_0");
+				break;
+			case(NativeKeyEvent.VC_1):
+				file = new File(user + "_1");
+				break;
+			case(NativeKeyEvent.VC_2):
+				file = new File(user + "_2");
+				break;
+			case(NativeKeyEvent.VC_3):
+				file = new File(user + "_3");
+				break;
+			case(NativeKeyEvent.VC_4):
+				file = new File(user + "_4");
+				break;
+			case(NativeKeyEvent.VC_5):
+				file = new File(user + "_5");
+				break;
+			case(NativeKeyEvent.VC_6):
+				file = new File(user + "_6");
+				break;
+			case(NativeKeyEvent.VC_7):
+				file = new File(user + "_7");
+				break;
+			case(NativeKeyEvent.VC_8):
+				file = new File(user + "_8");
+				break;
+			case(NativeKeyEvent.VC_9):
+				file = new File(user + "_9");
 				break;
 			default:
 				return false;

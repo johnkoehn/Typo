@@ -24,7 +24,7 @@ public class KeyManager
 	Key currPressed;
 	Key lastReleased;
 	
-	static int numberOfCheckedKeyPresses = 50;
+	static int numberOfCheckedKeyPresses = 30;
 	static int[] checkedKeyPresses = new int[numberOfCheckedKeyPresses];
 	static int count = 0;
 	public static boolean validate = false;
@@ -36,7 +36,8 @@ public class KeyManager
 	//Key lastKeyPressed;
 	public int keysPressed = 0;
 	private String user;
-	boolean hasNextKeyTyped;	
+	boolean hasNextKeyTyped;
+	public boolean f1Pressed = false;
 	
 	public KeyManager(String user, boolean newUser)
 	{
@@ -99,6 +100,40 @@ public class KeyManager
 			k = new Key(NativeKeyEvent.VC_Z);
 			keys.add(k);	
 			k = new Key(NativeKeyEvent.VC_SPACE);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_ENTER);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_COMMA);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_PERIOD);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_SHIFT_L);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_SHIFT_R);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_SEMICOLON);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_BACKSPACE);
+			keys.add(k);;
+			k = new Key(NativeKeyEvent.VC_0);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_1);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_2);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_3);
+			keys.add(k);;
+			k = new Key(NativeKeyEvent.VC_4);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_5);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_6);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_7);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_8);
+			keys.add(k);
+			k = new Key(NativeKeyEvent.VC_9);
 			keys.add(k);
 		}
 		else
@@ -166,6 +201,40 @@ public class KeyManager
 		keys.add(k);	
 		k = new Key(NativeKeyEvent.VC_SPACE, user);
 		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_ENTER, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_COMMA, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_PERIOD, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_SHIFT_L, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_SHIFT_R, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_SEMICOLON, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_BACKSPACE, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_0, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_1, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_2, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_3, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_4, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_5, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_6, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_7, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_8, user);
+		keys.add(k);
+		k = new Key(NativeKeyEvent.VC_9, user);
+		keys.add(k);
 	}
 	
 	public void createListener()
@@ -198,6 +267,10 @@ public class KeyManager
 				timeOfLastKeyPress = System.currentTimeMillis();
 				int keyID = e.getKeyCode();
 				alertKeyPressed(keyID);
+				if(keyID == NativeKeyEvent.VC_F1)
+				{
+					f1Pressed = true;
+				}
 				keysPressed += 1;
 				///System.out.println("Key Pressed: " + NativeKeyEvent.getKeyText(e.getKeyCode()));
 				//lastKeyReleased = currKeyReleased;

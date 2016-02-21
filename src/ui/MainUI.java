@@ -32,7 +32,8 @@ public class MainUI extends JFrame
 	private UserModel userModel;
 	private JScrollPane scrollPaneList;
 	private long time = 10000;
-	private int learnValue = 100;
+	private int learnValue = 200;
+	private volatile boolean run;
 
 	/**
 	 * Launch the application.
@@ -205,12 +206,13 @@ public class MainUI extends JFrame
 						KeyManager mang = new KeyManager((String)userModel.getElementAt(index), false);
 						mang.createListener();
 						
+						run = true;
 						Thread thred = new Thread(new Runnable()
 						{
 							@Override
 							public void run()
 							{
-								while(true)
+								while(run)
 								{
 									try
 									{
@@ -234,7 +236,7 @@ public class MainUI extends JFrame
 							@Override
 							public void run()
 							{
-								while(true)
+								while(run)
 								{
 									try
 									{
@@ -244,6 +246,14 @@ public class MainUI extends JFrame
 											KeyManager.validate = true;
 											
 										}
+										
+										if(mang.f1Pressed && KeyManager.validate == false)
+										{
+											setVisible(true);
+											mang.stop();
+											run = false;
+										}
+										
 									} catch (InterruptedException e)
 									{
 										// TODO Auto-generated catch block

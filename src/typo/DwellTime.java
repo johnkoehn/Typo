@@ -19,9 +19,15 @@ public class DwellTime
 		index = times.length;
 	}
 	
-	public DwellTime(int id, int masterId, int avg, int timesPressed)
+	public DwellTime(int id,int masterId, int avg, int timesPressed)
 	{
-		
+		this.id = id;
+		this.masterId = masterId;
+		index = times.length - timesPressed;
+		avgTime = avg;
+		for(int i = times.length - 1; i >= index; i -= 1){
+			times[i] = avg;
+		}
 	}
 	
 	public void receive(int time)
@@ -82,6 +88,6 @@ public class DwellTime
 	
 	public String write()
 	{
-		return NativeKeyEvent.getKeyText(masterId) + "," + NativeKeyEvent.getKeyText(id) + "," + avgTime + "," + (times.length - index);
+		return NativeKeyEvent.getKeyText(masterId) + "," + NativeKeyEvent.getKeyText(id) + "," + avgTime + "," + (times.length - index) + ",";
 	}
 }

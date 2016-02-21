@@ -103,59 +103,59 @@ public class KeyManager
 	private void loadKeyData()
 	{
 		//Adds all of the keys to ArrayList<Key> keys
-		k = new Key(NativeKeyEvent.VC_A);
+		k = new Key(NativeKeyEvent.VC_A, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_B);
+		k = new Key(NativeKeyEvent.VC_B, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_C);
+		k = new Key(NativeKeyEvent.VC_C, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_D);
+		k = new Key(NativeKeyEvent.VC_D, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_E);
+		k = new Key(NativeKeyEvent.VC_E, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_F);
+		k = new Key(NativeKeyEvent.VC_F, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_G);
+		k = new Key(NativeKeyEvent.VC_G, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_H);
+		k = new Key(NativeKeyEvent.VC_H, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_I);
+		k = new Key(NativeKeyEvent.VC_I, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_J);
+		k = new Key(NativeKeyEvent.VC_J, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_K);
+		k = new Key(NativeKeyEvent.VC_K, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_L);
+		k = new Key(NativeKeyEvent.VC_L, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_M);
+		k = new Key(NativeKeyEvent.VC_M, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_N);
+		k = new Key(NativeKeyEvent.VC_N, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_O);
+		k = new Key(NativeKeyEvent.VC_O, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_P);
+		k = new Key(NativeKeyEvent.VC_P, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_Q);
+		k = new Key(NativeKeyEvent.VC_Q, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_R);
+		k = new Key(NativeKeyEvent.VC_R, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_S);
+		k = new Key(NativeKeyEvent.VC_S, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_T);
+		k = new Key(NativeKeyEvent.VC_T, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_U);
+		k = new Key(NativeKeyEvent.VC_U, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_V);
+		k = new Key(NativeKeyEvent.VC_V, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_W);
+		k = new Key(NativeKeyEvent.VC_W, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_X);
+		k = new Key(NativeKeyEvent.VC_X, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_Y);
+		k = new Key(NativeKeyEvent.VC_Y, user);
 		keys.add(k);
-		k = new Key(NativeKeyEvent.VC_Z);
+		k = new Key(NativeKeyEvent.VC_Z, user);
 		keys.add(k);	
-		k = new Key(NativeKeyEvent.VC_SPACE);
+		k = new Key(NativeKeyEvent.VC_SPACE, user);
 		keys.add(k);
 	}
 	
@@ -242,7 +242,7 @@ public class KeyManager
 		{
 			for(Key key : keys)
 			{
-				key.write();
+				key.write(user);
 			}
 		}
 		

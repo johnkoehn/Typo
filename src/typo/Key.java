@@ -89,9 +89,9 @@ public class Key
 		return nextKeyID;
 	}
 	
-	public void write()
+	public void write(String user)
 	{
-		dManager.write("test");
+		dManager.write(user);
 	}
 	
 	public ArrayList<String> writeBig(){

@@ -21,6 +21,11 @@ public class DwellTime
 	
 	public DwellTime(int id,int masterId, int avg, int timesPressed)
 	{
+		if(index != times.length)
+		{
+			first = false;
+		}
+		
 		this.id = id;
 		this.masterId = masterId;
 		index = times.length - timesPressed;
@@ -76,7 +81,6 @@ public class DwellTime
 			sum += times[i];
 			count += 1;
 		}
-		
 		avgTime = sum/count;
 	}
 	

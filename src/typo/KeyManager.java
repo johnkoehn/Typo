@@ -2,10 +2,12 @@ package typo;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 //Global key listener libraries
 import org.jnativehook.GlobalScreen;
@@ -22,7 +24,7 @@ public class KeyManager
 	Key currPressed;
 	Key lastReleased;
 	
-	static int numberOfCheckedKeyPresses = 25;
+	static int numberOfCheckedKeyPresses = 10;
 	static int[] checkedKeyPresses = new int[numberOfCheckedKeyPresses];
 	static int count = 0;
 	static boolean validate = false;
@@ -289,6 +291,16 @@ public class KeyManager
 				{
 					System.out.println("Failed");
 					count = 0;
+					Runtime rt = Runtime.getRuntime();
+					
+					try
+					{
+						Runtime.getRuntime().exec("C:\\Windows\\System32\\rundll32.exe user32.dll,LockWorkStation");
+					} catch (IOException e)
+					{
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}	
 		
